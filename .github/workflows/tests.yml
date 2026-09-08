@@ -39,6 +39,10 @@ jobs:
           mkdir -p ~/.oci
           echo "${{ secrets.OCI_KEY_CONTENT }}" > ~/.oci/key.pem
           chmod 600 ~/.oci/key.pem
+      - name: Debug key
+        run: |
+          ls -la ~/.oci/
+          cat ~/.oci/key.pem | head -3
       - name: Run test suite
         run: |
           vendor/bin/phpunit --color tests/
